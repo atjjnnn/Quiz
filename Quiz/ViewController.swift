@@ -10,18 +10,28 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        
-        var str = ""
-        str = "Hello Swift"
-        self.label.text = str
     }
 
+    // 画面遷移時に呼ばれるメソッド
+    override func prepare(for seque: UIStoryboardSegue, sender: Any?) {
+        
+        // セグエの遷移先がQuizViewControllerの場合
+        if let quizViewController =
+            seque.destination as? QuizViewController {
+            
+            // QuizViewControllerのnameTextプロパティにnameTextFieldに入力された値を代入
+            if let text = self.nameTextField.text {
+                quizViewController.nameText = text
+            }
+        }
+    }
+    
     @IBAction func pressButton(_ sender: Any) {
-        self.label.text = "ボタンを押しました"
     }
     
 }
