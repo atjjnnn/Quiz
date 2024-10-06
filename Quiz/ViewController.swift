@@ -15,6 +15,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let q = Quiz(text: "問題文", correctAnswer: true, imageName: "neko")
+        print(q.text)
+        print(q.correctAnswer)
+        print(q.imageName)
     }
 
     // 画面遷移時に呼ばれるメソッド
