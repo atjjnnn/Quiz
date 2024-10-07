@@ -31,4 +31,24 @@ class QuizManager {
         score = 0
         status = .inAnswer
     }
+    
+    var currentQuiz: Quiz {
+        get {
+            return self.quizzes[currentIndex]
+        }
+    }
+    
+    func answerQuiz(answer: Bool) {
+        if (self.currentQuiz.correctAnswer == answer) {
+            score += 1
+        }
+    }
+    
+    func nextQuiz() {
+        if currentIndex < quizzes.count - 1 {
+            currentIndex += 1
+        } else {
+            status = .done
+        }
+    }
 }

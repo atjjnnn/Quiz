@@ -13,6 +13,7 @@ class QuizViewController: UIViewController {
     var nameText : String = ""
     
     @IBOutlet weak var quizCard: QuizCard!
+    let manager: QuizManager = QuizManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +21,16 @@ class QuizViewController: UIViewController {
         // Do any additional setup after loading the view.ß
         
         self.quizCard.style = .initial
+        self.loadQuiz()
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragQuizCard(_:)))
         self.quizCard.addGestureRecognizer(panGestureRecognizer)
+    }
+    
+    func loadQuiz() {
+        // クイズの問題文を表示
+        self.quizCard.quizLabel.text = manager.currentQuiz.text
+        // クイズの画像を表示
+        self.quizCard.quizImageView.image = UIImage(named: manager.currentQuiz.imageName)
     }
     
     @objc func dragQuizCard(_ sender: UIPanGestureRecognizer) {

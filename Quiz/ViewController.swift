@@ -16,10 +16,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let q = Quiz(text: "問題文", correctAnswer: true, imageName: "neko")
-        print(q.text)
-        print(q.correctAnswer)
-        print(q.imageName)
+        // インスタンス生成
+        let quizManager = QuizManager()
+        // 最初のクイズの問題文を確認
+        print(quizManager.currentQuiz.text)
+        // クイズに○回答する
+        quizManager.answerQuiz(answer: true)
+        // スコアを確認
+        print(quizManager.score)
+        // 次のクイズを取得
+        quizManager.nextQuiz()
+        // 次のクイズの問題文を確認
+        print(quizManager.currentQuiz.text)
     }
 
     // 画面遷移時に呼ばれるメソッド
